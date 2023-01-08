@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.css'
+import { format } from 'date-fns'
+import Clock from './components/Clock'
+import { getHourInfo } from './utils/utils'
 
-function App() {
+const App = () => {
+  const date = new Date()
+  const hourInfo = getHourInfo(parseInt(format(date, 'hh')))
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <Clock />
+
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Animal: {hourInfo.animal} - Órgano: {hourInfo.organo}
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
