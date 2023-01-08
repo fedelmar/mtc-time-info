@@ -1,20 +1,31 @@
 import './App.css'
-import { format } from 'date-fns'
-import Clock from './components/Clock'
-import { getHourInfo } from './utils/utils'
+import { useGeolocated } from 'react-geolocated'
+import { Clock } from './components/Clock'
 
 const App = () => {
-  const date = new Date()
-  const hourInfo = getHourInfo(parseInt(format(date, 'hh')))
+  const { coords, isGeolocationAvailable, isGeolocationEnabled } =
+    useGeolocated({
+      positionOptions: {
+        enableHighAccuracy: false
+      },
+      userDecisionTimeout: 5000
+    })
 
   return (
     <div className="App">
       <header className="App-header">
         <Clock />
+        {coords && <Clock lng={coords.longitude} isSolarTime={true} />}
 
-        <p>
-          Animal: {hourInfo.animal} - Órgano: {hourInfo.organo}
-        </p>
+        {!isGeolocationAvailable ? (
+          <div>Su navegador no soporta geolocalización</div>
+        ) : !isGeolocationEnabled ? (
+          <div>Geolocalización no habilitada</div>
+        ) : coords && coords.latitude && coords.longitude ? (
+          <div>
+            Latitud: {coords.latitude} - Longitud: {coords.longitude}
+          </div>
+        ) : null}
       </header>
     </div>
   )

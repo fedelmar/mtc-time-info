@@ -1,3 +1,5 @@
+import SunCalc from 'suncalc3'
+
 export const getHourInfo = (hour) => {
   switch (hour) {
     case 1:
@@ -39,4 +41,10 @@ export const getHourInfo = (hour) => {
     default:
       break
   }
+}
+
+export const getLocalSolarTime = async (date, lng, utcOffset) => {
+  const offset = (utcOffset / 60) * -1
+
+  return  SunCalc.getSolarTime(date, lng, offset)
 }
