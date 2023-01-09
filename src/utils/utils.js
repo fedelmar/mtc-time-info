@@ -13,7 +13,7 @@ export const getHourInfo = (hour) => {
       return { animal: 'Conejo', organo: 'Intestino grueso' }
     case 7:
     case 8:
-      return { animal: 'Estómago', organo: 'Dragón' }
+      return { animal: 'Dragón', organo: 'Estómago' }
     case 9:
     case 10:
       return { animal: 'Serpiente', organo: 'Bazo' }
