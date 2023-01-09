@@ -35,9 +35,9 @@ export const Clock = ({ lng, isSolarTime = false }) => {
   }, [lng, date])
 
   useEffect(() => {
-    setLegalHourInfo(getHourInfo(parseInt(format(date, 'hh'))))
+    setLegalHourInfo(getHourInfo(parseInt(format(date, 'HH'))))
     if (solarDate) {
-      setSoalarHourInfo(getHourInfo(parseInt(format(solarDate, 'hh'))))
+      setSoalarHourInfo(getHourInfo(parseInt(format(solarDate, 'HH'))))
     }
   }, [date, solarDate])
 
