@@ -43,7 +43,7 @@ export const Clock = ({ lng, isSolarTime = false }) => {
 
   return isSolarTime ? (
     <>
-      <h2>{solarDate && `Hola Solar: ${format(solarDate, 'HH:mm')}`}</h2>
+      <h2>{solarDate && `Hora Solar: ${format(solarDate, 'HH:mm')}`}</h2>
       {solarHourInfo && (
         <p>
           Animal: {solarHourInfo.animal} - Órgano: {solarHourInfo.organo}
